@@ -156,8 +156,36 @@ If you experience or witness unacceptable behavior:
 - **Cultural Sensitivity**: Respecting different cultural backgrounds
 - **Accessibility**: Making the program accessible to all participants
 
+## Scope
+
+### Smart Contract Source Codes
+The bug bounty program covers the following smart contract source codes:
+- **Repository**: [Dex223-contracts](https://github.com/EthereumCommonwealth/Dex223-contracts/tree/00ad2a0df71852d8dc7ebc039058c440b4bc8572)
+- **Focus Areas**: All smart contracts within the defined scope, excluding specific modules listed below
+
+## Out of Scope
+
+### Excluded Modules
+The following modules are explicitly out of scope for the bug bounty program:
+
+- **MarginModule**: [Dex223MarginModule.sol](https://github.com/EthereumCommonwealth/Dex223-contracts/blob/00ad2a0df71852d8dc7ebc039058c440b4bc8572/contracts/dex-core/Dex223MarginModule.sol)
+  - **Reason**: Work-in-progress module not ready for security testing
+  
+- **PriceOracle for MarginModule**: [Dex223Oracle.sol](https://github.com/EthereumCommonwealth/Dex223-contracts/blob/00ad2a0df71852d8dc7ebc039058c440b4bc8572/contracts/dex-core/Dex223Oracle.sol)
+  - **Reason**: Oracle implementation specifically designed for the MarginModule
+
+## Known Issues
+
+The following issues are already known and should not be reported as new vulnerabilities:
+
+1. **Pool Creation Error**: Error in pool creation for a token pair where one token is ERC-20 Original and the other is ERC-223 Original without an existing ERC-20 wrapper.
+
+2. **Auto-conversion Issue**: Auto-conversion of ERC-20 wrapper-tokens to ERC-223 origin in a pair where one token is ERC-20 Origin and the other is ERC-223 Origin does not happen when there is only ERC-20-side liquidity in that pool.
+
+3. **Non-standard tokens (fee-on-transfer, rebasing and similar)**: The Token Converter (EIP-7417) and the DEX support only standard ERC-20 and ERC-223 tokens, which deliver exactly the amount they report. Tokens that charge a fee on transfer, rebase, or otherwise deliver a different amount than they report are not supported. Wrappers minted for such a token can end up under-backed, but the effect is confined to holders of that token's own wrapper, because every wrapper is bound to its origin token. Reports whose impact depends on a non-standard token, including calling `tokenReceived` from a contract that is not a real ERC-223 token, are not eligible (see [issue #13](https://github.com/rroland10/dex223-bug-bounty/issues/13)).
+
 ---
 
 **Together, we can create a safe, respectful, and productive environment for security research.**
 
-*Last Updated: July 2025* 
+*Last Updated: October 2026* 

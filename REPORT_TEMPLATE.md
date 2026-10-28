@@ -16,6 +16,8 @@
 
 **Report ID**: [Auto-generated]
 
+**Scope Verification**: [Confirm this is NOT a known issue from scope documentation]
+
 ## Vulnerability Details
 
 ### Description
@@ -90,6 +92,7 @@
 - [Academic papers]
 - [Blog posts]
 - [GitHub Repository](https://github.com/EthereumCommonwealth)
+- [Dex223-contracts Repository](https://github.com/EthereumCommonwealth/Dex223-contracts/tree/00ad2a0df71852d8dc7ebc039058c440b4bc8572)
 
 ### Timeline
 - **Discovery**: [Date]

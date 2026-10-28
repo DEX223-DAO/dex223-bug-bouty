@@ -62,6 +62,11 @@ See our [Rewards Structure](../REWARDS.md) for complete details.
 
 ## Program Scope
 
+### Smart Contract Source Codes
+The bug bounty program covers the following smart contract source codes:
+- **Repository**: [Dex223-contracts](https://github.com/EthereumCommonwealth/Dex223-contracts/tree/00ad2a0df71852d8dc7ebc039058c440b4bc8572)
+- **Focus Areas**: All smart contracts within the defined scope, excluding specific modules listed below
+
 ### In Scope
 - **Smart Contracts**: All Dex223 contracts on Ethereum mainnet and testnets
 - **Web Application**: Frontend and backend services at https://test-app.dex223.io
@@ -69,6 +74,25 @@ See our [Rewards Structure](../REWARDS.md) for complete details.
 - **Swap Interface**: https://test-app.dex223.io/en/swap
 - **Test Environment**: https://test-app.dex223.io
 - **Infrastructure**: Cloud services and deployment pipelines
+
+### Out of Scope
+- **Excluded Modules**:
+  - **MarginModule**: Work-in-progress module not ready for security testing
+  - **PriceOracle for MarginModule**: Oracle implementation specifically designed for the MarginModule
+- Social engineering attacks (without permission)
+- Physical security assessments
+- Third-party services not owned by Dex223
+- Known vulnerabilities in dependencies
+- Denial of service attacks
+
+### Known Issues
+The following issues are already known and should not be reported as new vulnerabilities:
+
+1. **Pool Creation Error**: Error in pool creation for a token pair where one token is ERC-20 Original and the other is ERC-223 Original without an existing ERC-20 wrapper.
+
+2. **Auto-conversion Issue**: Auto-conversion of ERC-20 wrapper-tokens to ERC-223 origin in a pair where one token is ERC-20 Origin and the other is ERC-223 Origin does not happen when there is only ERC-20-side liquidity in that pool.
+
+3. **Non-standard tokens (fee-on-transfer, rebasing and similar)**: The Token Converter (EIP-7417) and the DEX support only standard ERC-20 and ERC-223 tokens, which deliver exactly the amount they report. Tokens that charge a fee on transfer, rebase, or otherwise deliver a different amount than they report are not supported. Wrappers minted for such a token can end up under-backed, but the effect is confined to holders of that token's own wrapper, because every wrapper is bound to its origin token. Reports whose impact depends on a non-standard token, including calling `tokenReceived` from a contract that is not a real ERC-223 token, are not eligible (see [issue #13](https://github.com/rroland10/dex223-bug-bounty/issues/13)).
 
 ### Test Environment Access
 - **Test App**: https://test-app.dex223.io
@@ -80,4 +104,4 @@ See our [Rewards Structure](../REWARDS.md) for complete details.
 
 **Need help?** Join our [Telegram](https://t.me/Dex223_defi) or [Discord](https://discord.gg/t5bdeGC5Jk) community!
 
-*Last Updated: July 2025*
+*Last Updated: October 2026*

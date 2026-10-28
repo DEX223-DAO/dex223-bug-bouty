@@ -154,6 +154,15 @@ We aim to process payments as quickly as possible:
 - **Scope Dispute**: Valid in-scope vulnerability
 - **Quality Recognition**: Exceptional report quality
 
+## Scope Compliance
+
+### Important Notes
+- **Repository**: All reports must be based on [Dex223-contracts](https://github.com/EthereumCommonwealth/Dex223-contracts/tree/00ad2a0df71852d8dc7ebc039058c440b4bc8572)
+- **Deployed Code Only**: A report must reproduce against the deployed contracts listed in the [README](README.md#deployed-contracts-what-to-test). Findings that only reproduce on older code that has since been fixed and redeployed are not eligible.
+- **Excluded Modules**: MarginModule and PriceOracle are out of scope
+- **Known Issues**: Pool creation errors, auto-conversion issues and non-standard tokens (fee-on-transfer, rebasing and similar) are documented and should not be reported
+- **Compliance Required**: Reports must comply with scope documentation to be eligible for rewards
+
 
 
 ---
